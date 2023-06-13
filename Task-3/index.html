@@ -1,1 +1,125 @@
 
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>todo</title>
+
+<!-- css -->
+
+        <style>
+            body{
+                /* background-color: rgb(115, 132, 141); */
+                background-image: url('https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000');
+                background-position: center;
+                background-size: cover;
+                align-items: center;
+            }
+            .class1{
+                font-size: 25px;
+                padding-bottom: 10px;
+                padding-right: 550px;
+                
+            }
+            .class2{
+                font-size: 25px;
+                padding-right: 550px;
+            }
+            .class3{
+                padding-right:550px;
+            }
+            
+            #submit{
+                background-color: rgb(91, 233, 91);
+                width: 30%;
+                color: white;
+            }
+            #title{
+                width: 30%;
+                
+            }
+            #desc{
+                width: 30%;
+                height: 200px;
+                line-break: auto;
+                
+            }
+            th{
+            height: auto;
+            width: 600px;
+            font-size: 20px;
+            
+            
+            }
+            .entry{
+                width:400px;
+                margin-top: 2%;
+                color: rgb(10, 23, 29);
+                margin-left: 700px;
+                margin-right: 28%;
+                margin-top: -250px;
+            }
+        </style>
+
+<!---->
+    </head>
+    <body>
+        <center><h1 style="color: rgb(12, 156, 55);padding-left: 30%;padding-right: 30%;text-decoration: underline;">To-Do Web App</h1></center>
+        <center> <div class="main">
+            <form id="form">
+            
+            <div class="class1">
+                <input type="text" id="title" placeholder="Title" required>
+            </div>
+            <div class="class2">
+                <textarea placeholder="Description" id="desc"></textarea>
+            </div>
+            <div class="class3">
+                <button type="submit" id="submit" onclick="display()">Submit</button>
+            </div>
+        </form>
+        </div>
+        <div class="entry">
+            <table id="details" border="1">
+                    <tr>
+                        <th>S.No</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Exit</th>
+                    </tr>
+            </table>
+        </div></center>
+
+<!-- JAVA SCRIPT START-->
+
+        <script>
+            var i=1
+            function display(){
+                var t=document.getElementById("title").value;
+                let d=document.getElementById("desc").value;
+                if(t!='' && d!=''){
+                    var Add = document.getElementById("details");
+                    var new1 = Add.insertRow();
+            
+                    var del = document.createElement('button');
+                    del.textContent = 'X';
+                    del.addEventListener('click' , function () {
+                        var rowIndex = this.parentNode.parentNode.rowIndex;
+                        Add.deleteRow(rowIndex);
+                    });
+
+                    var data0 = new1.insertCell(0);    
+                    var data1 = new1.insertCell(1);
+                    var data2 = new1.insertCell(2);
+                    var data3 = new1.insertCell(3);
+
+                    data0.innerHTML = i;    
+                    data1.innerHTML = t;
+                    data2.innerHTML = d;
+                    data3.appendChild(del);
+                    i+=1;
+                    document.getElementById("form").reset();   
+                } 
+            }
+        </script>
+    </body>
+</html>
